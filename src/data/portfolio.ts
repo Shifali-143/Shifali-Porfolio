@@ -7,49 +7,109 @@ export const SOCIAL = {
 } as const
 
 // ── Skill categories ──
+export type SkillLevel = 'expert' | 'proficient' | 'familiar'
+
+export interface Skill {
+  name: string
+  level: SkillLevel
+}
+
 export interface SkillCategory {
   title: string
   icon: string
-  skills: string[]
+  skills: Skill[]
   color: string
+}
+
+export const SKILL_LEVELS: Record<SkillLevel, { label: string; color: string }> = {
+  expert: { label: 'Expert', color: '#06b6d4' },
+  proficient: { label: 'Proficient', color: '#fbbf24' },
+  familiar: { label: 'Familiar', color: '#64748b' },
 }
 
 export const SKILLS: SkillCategory[] = [
   {
-    title: 'Programming',
-    icon: '⌨️',
-    skills: ['Python', 'JavaScript', 'TypeScript', 'SQL'],
-    color: '#06b6d4',
+    title: 'AI / ML',
+    icon: '🧠',
+    color: '#f472b6',
+    skills: [
+      { name: 'Large Language Models', level: 'expert' },
+      { name: 'Generative AI', level: 'expert' },
+      { name: 'Agentic AI', level: 'expert' },
+      { name: 'LangChain', level: 'expert' },
+      { name: 'LangGraph', level: 'proficient' },
+      { name: 'RAG', level: 'proficient' },
+      { name: 'Prompt Engineering', level: 'expert' },
+      { name: 'NLP', level: 'proficient' },
+    ],
+  },
+  {
+    title: 'Deep Learning',
+    icon: '⚡',
+    color: '#c084fc',
+    skills: [
+      { name: 'PyTorch', level: 'proficient' },
+      { name: 'TensorFlow', level: 'proficient' },
+      { name: 'CNN + LSTM', level: 'expert' },
+      { name: 'ResNet', level: 'proficient' },
+      { name: 'YOLOv8', level: 'proficient' },
+      { name: 'Faster R-CNN', level: 'familiar' },
+      { name: 'ONNX', level: 'familiar' },
+      { name: 'TorchServe', level: 'familiar' },
+    ],
+  },
+  {
+    title: 'Computer Vision',
+    icon: '👁️',
+    color: '#34d399',
+    skills: [
+      { name: 'OpenCV', level: 'proficient' },
+      { name: 'Object Detection', level: 'proficient' },
+      { name: 'Signal Classification', level: 'expert' },
+      { name: 'Visual Defect Detection', level: 'proficient' },
+      { name: 'Image Preprocessing', level: 'proficient' },
+    ],
   },
   {
     title: 'Backend',
     icon: '⚙️',
-    skills: ['Django', 'Django REST Framework', 'Flask', 'REST APIs'],
-    color: '#c084fc',
+    color: '#818cf8',
+    skills: [
+      { name: 'Python', level: 'expert' },
+      { name: 'Django', level: 'expert' },
+      { name: 'Django REST Framework', level: 'expert' },
+      { name: 'Flask', level: 'proficient' },
+      { name: 'REST APIs', level: 'expert' },
+      { name: 'JWT / SSO', level: 'proficient' },
+      { name: 'SQL', level: 'proficient' },
+    ],
   },
   {
     title: 'Frontend',
     icon: '🎨',
-    skills: ['React', 'Tailwind CSS', 'Vite', 'HTML/CSS'],
-    color: '#818cf8',
+    color: '#38bdf8',
+    skills: [
+      { name: 'React', level: 'proficient' },
+      { name: 'TypeScript', level: 'proficient' },
+      { name: 'JavaScript', level: 'proficient' },
+      { name: 'Tailwind CSS', level: 'proficient' },
+      { name: 'Vite', level: 'proficient' },
+      { name: 'HTML / CSS', level: 'expert' },
+    ],
   },
   {
-    title: 'AI / ML',
-    icon: '🧠',
-    skills: ['LLMs', 'Agentic AI', 'LangChain', 'LangGraph', 'RAG', 'CNN', 'LSTM', 'Prompt Engineering'],
-    color: '#f472b6',
-  },
-  {
-    title: 'Database & Cloud',
+    title: 'Database, Cloud & Tools',
     icon: '☁️',
-    skills: ['PostgreSQL', 'SQLite', 'AWS S3', 'Redis'],
-    color: '#34d399',
-  },
-  {
-    title: 'Dev Tools',
-    icon: '🔧',
-    skills: ['Git / GitHub', 'Celery', 'DSA', 'Debugging'],
     color: '#fbbf24',
+    skills: [
+      { name: 'PostgreSQL', level: 'expert' },
+      { name: 'SQLite', level: 'proficient' },
+      { name: 'Redis', level: 'proficient' },
+      { name: 'AWS S3', level: 'proficient' },
+      { name: 'Celery', level: 'proficient' },
+      { name: 'Git / GitHub', level: 'expert' },
+      { name: 'PDF Parsing', level: 'proficient' },
+    ],
   },
 ]
 
@@ -118,6 +178,19 @@ export const PROJECTS: Project[] = [
       '4-class ECG classification with 82%+ accuracy on 43,674 records',
       'Compared five deep-learning architectures for optimal MI detection',
       'Applied class-imbalance techniques to boost 88%+ MI sensitivity',
+    ],
+  },
+  {
+    title: 'Visual Defect Detection System',
+    subtitle: 'Real-time computer vision pipeline',
+    tech: ['Python', 'YOLOv8', 'OpenCV', 'Faster R-CNN', 'ONNX', 'TorchServe'],
+    color: '#34d399',
+    badge: 'Computer Vision',
+    features: [
+      'Real-time YOLOv8 pipeline for surface defect detection on imbalanced industrial datasets',
+      'OpenCV preprocessing: noise filtering, contrast normalization & geometric correction',
+      'Exported to ONNX and served via TorchServe REST API with drift monitoring',
+      'Benchmarked YOLOv8 vs Faster R-CNN on accuracy and inference latency',
     ],
   },
   {

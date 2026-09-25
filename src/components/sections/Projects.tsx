@@ -11,7 +11,7 @@ export function Projects() {
           <SectionTitle subtitle="Featured work">Key Projects</SectionTitle>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {PROJECTS.map((project, i) => (
             <AnimatedSection key={project.title} delay={i * 0.12}>
               <GlassCard className="h-full">
